@@ -17,23 +17,23 @@ var distance=0;
 var gameOver, restart;
 
 function preload(){
-  pathImg = loadImage("images/Road.png");
-  mainRacerImg1 = loadAnimation("images/mainPlayer1.png","images/mainPlayer2.png");
-  mainRacerImg2= loadAnimation("images/mainPlayer3.png");
+  pathImg = loadImage("Road.png");
+  mainRacerImg1 = loadAnimation("mainPlayer1.png","mainPlayer2.png");
+  mainRacerImg2= loadAnimation("mainPlayer3.png");
   
-  oppPink1Img = loadAnimation("images/opponent1.png","images/opponent2.png");
-  oppPink2Img = loadAnimation("images/opponent3.png");
+  oppPink1Img = loadAnimation("opponent1.png","opponent2.png");
+  oppPink2Img = loadAnimation("opponent3.png");
   
-  oppYellow1Img = loadAnimation("images/opponent4.png","images/opponent5.png");
-  oppYellow2Img = loadAnimation("images/opponent6.png");
+  oppYellow1Img = loadAnimation("opponent4.png","opponent5.png");
+  oppYellow2Img = loadAnimation("opponent6.png");
   
-  oppRed1Img = loadAnimation("images/opponent7.png","images/opponent8.png");
-  oppRed2Img = loadAnimation("images/opponent9.png");
+  oppRed1Img = loadAnimation("opponent7.png","opponent8.png");
+  oppRed2Img = loadAnimation("opponent9.png");
   
-  cycleBell = loadSound("sound/bell.mp3");
-  gameOverImg = loadImage("images/gameOver.png");
+  cycleBell = loadSound("bell.mp3");
+  gameOverImg = loadImage("gameOver.png");
 }
-
+//mouseY
 function setup(){
   
 createCanvas(1200,300);
@@ -50,7 +50,7 @@ mainCyclist.scale=0.07;
 //definir collider (colisor) para mainCyclist (ciclistaPrincipal)
 mainCyclist.setCollider('circle',0,0,350);
   
-gameOver = createSprite(650,150);
+gameOver = createSprite(500,150);
 gameOver.addImage(gameOverImg);
 gameOver.scale = 0.8;
 gameOver.visible = false;  
@@ -123,7 +123,7 @@ function draw() {
 }else if (gameState === END) {
     gameOver.visible = true;
     //Acrescente o código para mostrar o texto da instrução restart (reiniciar) aqui
-  text("Precione Seta Para Cima pra Reiniciar o jogo!",650,160)
+  text("Precione Seta Para Cima pra Reiniciar o jogo!",300,100);
   
     path.velocityX = 0;
     mainCyclist.velocityY = 0;
@@ -140,7 +140,10 @@ function draw() {
 
     //escreva uma condição para chamar a função reset()
     if(keyDown(UP_ARROW)){
-  gameState = play;
+      reset();
+      gameState = PLAY;
+      
+      
     }
 }
 }
@@ -178,9 +181,10 @@ function reset(){
  gameOver.visible = false;
  mainCyclist.addAnimation(player1,player2);
  pinkCG.destroyEach();
+ yellowCG.destroyEach();
+ redCG.destroyEach();
  distance = 0;
 }
-
 
 
 
