@@ -179,13 +179,11 @@ function redCyclists(){
 function reset(){
  gameState = PLAY;
  gameOver.visible = false;
- mainCyclist.addAnimation(player1,player2);
+ mainCyclist.addAnimation("SahilRunning",mainRacerImg1);
  pinkCG.destroyEach();
  yellowCG.destroyEach();
  redCG.destroyEach();
  distance = 0;
 }
-
-
 
 
